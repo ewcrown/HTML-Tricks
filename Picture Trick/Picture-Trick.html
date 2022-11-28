@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture Trick</title>
+    <style>
+        img {
+            display: block;
+            max-width: 100%;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .picture-trick {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .text-block h1 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .text-block p {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="picture-trick">
+        <picture>
+            <source media="(max-width: 480px)" srcset="./mobile-image.jpg" />
+            <img src="./desktop-image.jpg" />
+        </picture>
+        <div class="text-block">
+            <h1>Picture Trick</h1>
+            <p>Picture Will Change On <u><i>(max-width:480px)</i></u></p>
+        </div>
+    </div>
+</body>
+
+</html>
