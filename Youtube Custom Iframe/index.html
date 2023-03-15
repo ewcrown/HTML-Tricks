@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="player"></div>
+
+
+    <script>
+        // Desktop 
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+        let player;
+        const mediaQuery = window.matchMedia('(max-width: 768px)')
+        function onYouTubeIframeAPIReady(id) {
+
+            if (mediaQuery.matches) {
+                player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'ITMg062PYcI',
+                    playerVars: {
+                        'playsinline': 1,
+                        'autoplay': 1,
+                        'mute': 1,
+                        'loop': 1,
+                        'rel': 0,
+                        'controls': 0,
+                        'modestbranding': 1,
+                        'enablejsapi': 1,
+                        'playlist': 'ITMg062PYcI'
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            } else {
+                player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'ijE2MMtzkHg',
+                    playerVars: {
+                        'playsinline': 1,
+                        'autoplay': 1,
+                        'mute': 1,
+                        'loop': 1,
+                        'rel': 0,
+                        'controls': 0,
+                        'modestbranding': 1,
+                        'enablejsapi': 1,
+                        'playlist': 'ijE2MMtzkHg'
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                done = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
